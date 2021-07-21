@@ -1,5 +1,7 @@
 # Easy inventorying tool for Picnic users
 
+**Disclaimer: This project is absolutely not meant to be a very pretty piece of code. This is only used for connecting ean code's to picnic id's**
+
 Picnic sadly doesn't use ean code's in their app. So with this 'easy' tool I add all my items from my order in my basket and start scanning everything that is not yet known with a cheap barcode scanner. It's not ideal, but especialy the 'hunting mode' is very nice to use.
 
 ## Setup Linux/Mac:
