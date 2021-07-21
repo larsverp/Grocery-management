@@ -31,10 +31,10 @@ def list_items():
         del items_in_order[item_number]
         print('Item added to products table')
 
-answer = input('Do you want to fetch the picnic shopping card? (y/n) ')
+answer = input('Do you want to fetch the picnic shopping cart? (y/n) ')
 if answer == 'y':
     print('Fetching and saving shopping card...')
-    file = open('cardData.json', 'w', encoding='utf-8')
+    file = open('cartData.json', 'w', encoding='utf-8')
     file.write(json.dumps(picnic.get_cart(), ensure_ascii=False, indent=4))
     file.close()
     print('Shoping card is fetched and saved')
@@ -45,7 +45,7 @@ item_hunt_modus = 'n'
 if search_via_jumbo != 'y':
     item_hunt_modus = input('Do you want to enable picnic item hunt mode? (y/n) ')
 
-f = open('cardData.json', 'r')
+f = open('cartData.json', 'r')
 data = json.load(f)
 items_in_order = {}
 item_count = 0
@@ -61,6 +61,7 @@ while 0 != 1:
         try_again = True
         for key in items_in_order:
             while try_again == True:
+                os.system('cls||clear')
                 ean = input('[' + str(int(key)+1) + '/' + str(len(items_in_order)) + '] ' + 'Scan item: ' + items_in_order[key]['name'] + ' or press enter: ')
                 if ean != '':
                     mycursor.execute('SELECT description FROM products WHERE ean_code = ' + ean)
