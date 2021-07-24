@@ -6,16 +6,16 @@ In this Repo you can find several scripts used by me to automate the Picnic - Gr
 
 ## Table of contents
 - [Setup](#setup)
-    - [Set up the DB](#Setup_the_DB)
-    - [Setup Linux/Mac](#Setup_Linux/Mac)
-    - [Setup Windows](#Setup_Windows)
-- [Adding new packages](#Adding_new_packahes)
-- [How to use it](#How_to_use)
-    - [index.py](#The_index.py_file)
-    - [add_to_grocy.py (Explanation comming soon, see in file comment for now)](#Add_to_grocy.py_file)
-    - [match_grocy_picnic.py (Explanation comming soon, see in file comment for now)](#Match_grocy_picnic_file)
-    - [new_picnic_order.py (Explanation comming soon, see in file comment for now)](#Match_grocy_picnic_file)
-    - [pi_scanner.py (Explanation comming soon, see in file comment for now)](#Match_grocy_picnic_file)
+    - [Set up the DB](#Setup-the-DB)
+    - [Setup Linux/Mac](#Setup-Linux/Mac)
+    - [Setup Windows](#Setup-Windows)
+- [Adding new packages](#Adding-new-packahes)
+- [How to use it](#How-to-use)
+    - [index.py](#The-index.py-file)
+    - [add_to_grocy.py (Explanation comming soon, see in file comment for now)](#Add_to_grocy.py-file)
+    - [match_grocy_picnic.py (Explanation comming soon, see in file comment for now](#Match_grocy_picnic-file)
+    - [new_picnic_order.py (Explanation comming soon, see in file comment for now)](#Match_grocy_picnic-file)
+    - [pi_scanner.py (Explanation comming soon, see in file comment for now)](#Match_grocy_picnic-file)
 
 Picnic sadly doesn't use ean code's in their app. So with this 'easy' tool I add all my items from my order in my basket and start scanning everything that is not yet known with a cheap barcode scanner. It's not ideal, but especialy the 'hunting mode' is very nice to use.
 
