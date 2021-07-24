@@ -45,6 +45,9 @@ item_hunt_modus = 'n'
 if search_via_jumbo != 'y':
     item_hunt_modus = input('Do you want to enable picnic item hunt mode? (y/n) ')
 
+if search_via_jumbo == 'y':
+    instant_jumbo_add = input('Do you want to add items from the Jumbo site immediately? (y/n) ')
+
 f = open('cartData.json', 'r')
 data = json.load(f)
 items_in_order = {}
@@ -61,7 +64,6 @@ while 0 != 1:
         try_again = True
         for key in items_in_order:
             while try_again == True:
-                os.system('cls||clear')
                 ean = input('[' + str(int(key)+1) + '/' + str(len(items_in_order)) + '] ' + 'Scan item: ' + items_in_order[key]['name'] + ' or press enter: ')
                 if ean != '':
                     mycursor.execute('SELECT description FROM products WHERE ean_code = ' + ean)
@@ -81,6 +83,7 @@ while 0 != 1:
                         print('Added ' + items_in_order[key]['name'] + ' to products table')
                         break
                 else:
+                    os.system('cls||clear')
                     break
     else:
         ean = input('Please scan item or type exit:')
@@ -96,12 +99,18 @@ while 0 != 1:
             if len(jumboResults['products']['data']) > 0 and search_via_jumbo == 'y':
                 print('Found item on Jumbo site:')
                 print(jumboResults['products']['data'][0]['title'])
-                add_jumbo_product = input('Do you want to add this product using the Jumbo data? (y/n) ')
-                if add_jumbo_product == 'y':
+                if instant_jumbo_add != 'y':
+                    add_jumbo_product = input('Do you want to add this product using the Jumbo data? (y/n) ')
+                else:
+                    add_jumbo_product = 'n'
+                if add_jumbo_product == 'y' or instant_jumbo_add == 'y':
                     mycursor.execute('INSERT INTO products (ean_code, description, quantity, price, jumbo_product) VALUES (%s, %s, %s, %s, %s)', (ean, jumboResults['products']['data'][0]['title'], jumboResults['products']['data'][0]['quantity'], jumboResults['products']['data'][0]['prices']['price']['amount'], 1))
                     mydb.commit()
                     print('Item added to products table')
                 else:
                     list_items()
             else:
-                list_items()
+                if instant_jumbo_add == 'y':
+                    print('The following bardcode was not found on Jumbo.com: ' + ean)
+                else:
+                    list_items()
